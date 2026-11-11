@@ -3,12 +3,9 @@ const form = document.querySelector("#form-filme");
 
 const resposta = document.querySelector("#resposta");
 
-// 2 . Comunicacao com a API
-// Lembrete o codeverse tem APIKey ou seja senha nas req.
 
 const apiKey = "cv_O1CmR17ZIEME5jV3ExmPlwReVdLbcaYDIZikyezFLeG4xTUeGes2gVpwKLNulpIY";
 
-// Tem que falar o link (endpoint)
 const apiUrl = "https://api-ds.codeverse.dev.br/api/filmes";
 
 // 3. Capturar o evento de click do form
@@ -26,9 +23,9 @@ form.addEventListener("submit", async function (event) {
   const filme = {
       title: dados.get("title"),
       genero: dados.get("genero"),
-      ano: dados.get("ano"),
+      ano: Number(dados.get("ano")),
       diretor: dados.get("diretor"),
-      nota: dados.get("nota"),
+      nota: Number(dados.get("nota")),
       imageUrl: dados.get("imageUrl") || null
   }
 
@@ -42,14 +39,12 @@ form.addEventListener("submit", async function (event) {
 try {
 
   const respostaApi = await fetch(apiUrl, {
-    method: "GET",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       "x-api-key": apiKey,
     },
-
-    //enviar os dados
-
+    
     body: JSON.stringify(filme),
   });
 
@@ -59,17 +54,17 @@ try {
   try {
     resultado = texto ? JSON.parse(texto) : {};
   } catch (error) {
-    resultado = error;
-    return;
+    resultado = {};
   }
 
   if(respostaApi.ok){
-    resposta.textContent = `${resultado.title} foi cadastrado com sucesso.`;
+    resposta.textContent = `${filme.title} foi cadastrado com sucesso.`;
     form.reset();
   }
   
 } catch (error) {
   console.error(error);
-}
+  resposta.textContent = "Erro na conexão com a API.";
 
-})
+}
+});

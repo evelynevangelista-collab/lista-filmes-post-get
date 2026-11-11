@@ -5,17 +5,29 @@
 }
 
 body {
-  background-color: #e0f2fe;
-  color: #172554;
+  background-color: #0E1117;
   font-family: Arial, sans-serif;
   padding: 20px;
 }
 
+
 main {
-  background-color: white;
+  background-color: #000000;
   margin: 20px auto;
   max-width: 500px;
   padding: 20px;
+}
+
+a {
+    color:#dc2626
+}
+
+h2 {
+    color: red;
+}
+
+label {
+    color:white;
 }
 
 form {
@@ -28,31 +40,45 @@ form {
 
 #resposta {
   margin-top: 20px;
+  color: white;
 }
 
 
-button {
-  background-color: #dc2626;
-  border: 0;
-  color: white;
-  cursor: pointer;
-}
-
-
-header,
-footer {
-  background-color: #1d4ed8;
-  color: white;
+header {
+  background-color:#27292c ;
+  color: red;
   padding: 20px;
+}
+header p {
+    color: white;
+    padding-top: 10px;
 }
 
 input,
 button {
   padding: 10px;
+  background-color:#1F242D;
+  border: 1px solid #5b5f64;
+  color: white
 }
+
+button.btn-cadastrar {
+    background-color: #dc2626;
+    border: none;
+}
+
 
 p {
   justify-items: center;
   display: flex;
   gap: 10px;
+}
+
+
+
+footer {
+    background-color: #dc2626;
+    color: white;
+    padding: 20px;
+
 }
